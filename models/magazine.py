@@ -64,7 +64,7 @@ class MyMagazine(models.Model):
         #page1
         self.create_page("Première page",values['price1'],1,"page1.jpg",12,res)
         # page milieu
-        for i in range(2,values['number_pages']-1):
+        for i in range(2,values['number_pages']):
             self.create_page("Page "+str(i), values['price2'],i, "page2.jpg", 12,res)
             print("page"+str(i))
         # page finale
