@@ -1,0 +1,80 @@
+
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="mymagazine_list_view">
+      <field name="name">Magazine list</field>
+      <field name="model">mymagazine</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="title"/>
+          <field name="image"  widget="image" options="{'width': 10,'height':10}"/>
+          <field name="total_price" />
+          <field name="writer"/>
+          <field name="designer"/>
+          <field name="create_date"/>
+          <field name="create_uid" widget="many2one_avatar_user"/>
+          <field name="number_pages"/>
+<!--          <field name="statut"/>-->
+          <field name="pages"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- explicit from view definition -->
+
+    <record model="ir.ui.view" id="mymagazine_form_view">
+      <field name="name">Magazine From</field>
+      <field name="model">mymagazine</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+<!--            <header>-->
+<!--              <button name="next_state" type="object" class="oe_highlight" string="Next Year"></button>-->
+<!--              <field name="statut" widget="statusbar" ></field>-->
+<!--            </header>-->
+<!--            <header>-->
+<!--                <button name="createee" type="object" class="oe_highlight" icon="fa-apple" string="Next Year"></button>-->
+<!--            </header>-->
+            <group>
+                <group>
+                    <field name="title"/>
+                    <field name="image" widget="image"/>
+                    <field name="total_price" />
+                </group>
+                <group>
+                    <field name="writer"/>
+                    <field name="designer"/>
+                    <field name="number_pages" />
+                    <field name="create_uid" widget="many2one_avatar_user"/>
+                    <field name="price1" />
+                    <field name="price2" />
+                    <field name="price3" />
+                </group>
+            </group>
+            <notebook>
+              <page string="All Pages">
+                  <field name="pages" readonly="1"/>
+              </page>
+            </notebook>
+            <div class="oe_chatter">
+              <field name="message_follower_ids" widget="mail_followers"></field>
+              <field name="message_ids" widget="mail_thread"></field>
+            </div>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="mymagazine_action_window">
+      <field name="name">Magazines Window</field>
+      <field name="res_model">mymagazine</field>
+      <field name="view_mode">tree,form,kanban</field>
+    </record>
+ <!-- Top menu item -->
+    <menuitem name="Magazine Management" id="magasine.menu_root"/>
+    <menuitem name="My Magazines" id="magazine_mymagazines" parent="magasine.menu_root" action="mymagazine_action_window"/>
+
+
+  </data>
+</odoo>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="publish_command_form_view" model="ir.ui.view">
+            <field name="name">Orde de Publication d'une Page</field>
+            <field name="model">publish_command</field>
+            <field name="arch" type="xml">
+                <form string="ModelTitle">
+                    <sheet>
+                        <group>
+                            <field name="customer" placeholder="Customer"/>
+                            <group>
+                                <field name="page"/>
+                            </group>
+                            <group>
+                                <field name="month"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"></field>
+                        <field name="message_ids" widget="mail_thread"></field>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="publish_command_tree_view" model="ir.ui.view">
+            <field name="name">Liste des Ordres de publication</field>
+            <field name="model">publish_command</field>
+            <field name="arch" type="xml">
+                <tree string="Publications">
+                    <field name="page"/>
+                    <field name="img_page" widget="image"/>
+                    <field name="magazine_name"/>
+                    <field name="img_magazine" widget="image"/>
+                    <field name="customer" />
+                    <field name="month"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="publish_command_action_window">
+            <field name="name">Publications window</field>
+            <field name="res_model">publish_command</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    <menuitem name="Ordre de Publication des pages" id="publish_page_order" parent="magasine.menu_root" action="publish_command_action_window"/>
+    </data>
+</odoo>
