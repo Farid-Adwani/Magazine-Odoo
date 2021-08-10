@@ -26,7 +26,6 @@
     'data': [
         'security/ir.model.access.csv',
         'views/magazine.xml',
-        'views/templates.xml',
         'views/page.xml',
         'views/publish_command.xml',
     ],
